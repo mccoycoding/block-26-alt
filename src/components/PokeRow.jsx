@@ -13,6 +13,7 @@ export default function PokeRow({ pokemon, setSelectedPokemonName }) {
             try {
               const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
               const data = await response.json();
+              //set and update useful variables
               setSpriteUrl(data.sprites.front_default);
               setpokemonId(data.id);
               setType1(data.types[0].type.name);
@@ -29,9 +30,11 @@ export default function PokeRow({ pokemon, setSelectedPokemonName }) {
         <tr onClick={() => {
             setSelectedPokemonName(pokemon.name)
         }}>
+            {/*Capitalize the first letter*/}
             <td>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</td>
             <td><img src={spriteUrl} /></td>
             <td>{pokemonId}</td>
+            {/*If type2 is true, then they're a dual type pokemon. Else they're single typed*/}
             {type2 ? <td>{type1.charAt(0).toUpperCase() + type1.slice(1)}/{type2.charAt(0).toUpperCase() + type2.slice(1)}</td> : <td>{type1.charAt(0).toUpperCase() + type1.slice(1)}</td>}
         </tr>
     )

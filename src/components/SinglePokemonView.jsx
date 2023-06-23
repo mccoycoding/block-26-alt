@@ -5,9 +5,12 @@ export default function SinglePokemonView({ pokemonObj, selectedPokemonName, set
         // Handle the case when the pokemonObj is empty or not available yet
         return <div>Loading...</div>;
       }
+
+    //Set short names for useful table variables
     const pokeName = selectedPokemonName.charAt(0).toUpperCase() + selectedPokemonName.slice(1)
     const type1 = pokemonObj.types[0].type.name.charAt(0).toUpperCase() + pokemonObj.types[0].type.name.slice(1);
     let type2 = null
+    //If the length of the types object is greater than 1, we define our second type
     if (pokemonObj.types.length > 1){
         type2 = pokemonObj.types[1].type.name.charAt(0).toUpperCase() + pokemonObj.types[1].type.name.slice(1);
     }
@@ -15,6 +18,7 @@ export default function SinglePokemonView({ pokemonObj, selectedPokemonName, set
 
     return(
         <>
+        {/*Bring us back to the Pokedex for*/}
             <button onClick={() => {
                     setSelectedPokemonName(null)
                 }}>Back</button>
@@ -35,6 +39,7 @@ export default function SinglePokemonView({ pokemonObj, selectedPokemonName, set
                             <th colSpan={2}>Type</th>
                         </tr>
                         <tr>
+                            {/*If type2 is true, then they're a dual type pokemon. Else they're single typed*/}
                            {type2 ? <td colSpan={2}>{type1}/{type2}</td> : <td colSpan={2}>{type1}</td>}
                         </tr>
                         <tr>
