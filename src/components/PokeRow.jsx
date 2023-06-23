@@ -17,7 +17,9 @@ export default function PokeRow({ pokemon, setSelectedPokemonName }) {
               setSpriteUrl(data.sprites.front_default);
               setpokemonId(data.id);
               setType1(data.types[0].type.name);
-              setType2(data.types[1].type.name)
+              if (data.types.length > 1){
+                setType2(data.types[1].type.name)
+              }
             } catch (error) {
               console.log(error);
               return [];
