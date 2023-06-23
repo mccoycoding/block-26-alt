@@ -9,6 +9,7 @@ function App() {
   const [selectedPokemonName, setSelectedPokemonName] = useState(null);
   const [pokemonObj, setPokemonObj] = useState({})
   
+  //get useful information for SinglePokemonView
   useEffect(() => {
     async function fetchPokemonInfo() {
       if (!selectedPokemonName) return
@@ -26,6 +27,7 @@ function App() {
 
   return (
     <>
+      {/* If selectedPokemonName is true, display the singlePokemonView, else display the list. */}
       {
         selectedPokemonName ? (
           <SinglePokemonView pokemonObj={pokemonObj} selectedPokemonName={selectedPokemonName} setSelectedPokemonName={setSelectedPokemonName}/>
