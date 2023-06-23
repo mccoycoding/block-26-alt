@@ -8,6 +8,7 @@ import SinglePokemonView from './components/SinglePokemonView'
 function App() {
   const [selectedPokemonName, setSelectedPokemonName] = useState(null);
   const [pokemonObj, setPokemonObj] = useState({})
+  const [pokeOffset, setPokeOffset] = useState(0)
   
   //get useful information for SinglePokemonView
   useEffect(() => {
@@ -32,7 +33,7 @@ function App() {
         selectedPokemonName ? (
           <SinglePokemonView pokemonObj={pokemonObj} selectedPokemonName={selectedPokemonName} setSelectedPokemonName={setSelectedPokemonName}/>
         ) : (
-          <PokeList setSelectedPokemonName={setSelectedPokemonName}/>
+          <PokeList pokeOffset={pokeOffset} setPokeOffset={setPokeOffset} setSelectedPokemonName={setSelectedPokemonName}/>
         )
       }
     </>

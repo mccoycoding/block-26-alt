@@ -3,9 +3,9 @@ import PokeRow from './PokeRow';
 import PokeListNextButton from './PokeListNextButton';
 import PokeListPrevButton from './PokeListPrevButton';
 
-export default function PokeList({ setSelectedPokemonName }) {
+export default function PokeList({ pokeOffset, setPokeOffset, setSelectedPokemonName }) {
   const [pokeList, setPokeList] = useState([]);
-  const [pokeOffset, setPokeOffset] = useState(0)
+  
 
 
   useEffect(() => {
