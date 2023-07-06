@@ -41,9 +41,9 @@ export default function PokeList({ pokeOffset, setPokeOffset, setSelectedPokemon
       </thead>
       <tbody>
         <tr>
+          <td scope='col'>Pokedex#</td>
           <td scope='col'>Name</td>
           <td scope='col'>Sprite</td>
-          <td scope='col'>PokéDex #</td>
           <td scope='col'>Type</td>
         </tr>
         {isLoading ? (

@@ -9,7 +9,7 @@ export default function Header() {
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
-                <a className="navbar-brand" href="#">PokeDex</a>
+                <a className="navbar-brand" href="#">PokéDex</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-items">
                     <span className="navbar-toggler-icon"></span>
                 </button>

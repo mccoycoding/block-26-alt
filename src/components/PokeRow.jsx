@@ -32,10 +32,9 @@ export default function PokeRow({ pokemon, setSelectedPokemonName }) {
         <tr data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" onClick={() => {
             setSelectedPokemonName(pokemon.name)
         }}>
-            {/*Capitalize the first letter*/}
+            <td>{pokemonId}</td>
             <td>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</td>
             <td><img src={spriteUrl} /></td>
-            <td>{pokemonId}</td>
             {/*If type2 is true, then they're a dual type pokemon. Else they're single typed*/}
             {type2 ? <td>{type1.charAt(0).toUpperCase() + type1.slice(1)}/{type2.charAt(0).toUpperCase() + type2.slice(1)}</td> : <td>{type1.charAt(0).toUpperCase() + type1.slice(1)}</td>}
         </tr>
