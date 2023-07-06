@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function PokeListPrevButton({setPokeOffset, pokeOffset}) {
     return (
-        <button onClick={() =>{
+        <button className='btn btn-primary' onClick={() =>{
             let newOffset;
 
             if (pokeOffset <=10) {

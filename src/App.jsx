@@ -24,7 +24,7 @@ function App() {
   }, [selectedPokemonName])
 
   return (
-    <>
+    <div className='container-fluid text-center mx-4 my-4'>
       {/* If selectedPokemonName is true, display the singlePokemonView, else display the list. */}
       {
         selectedPokemonName ? (
@@ -33,7 +33,7 @@ function App() {
           <PokeList pokeOffset={pokeOffset} setPokeOffset={setPokeOffset} setSelectedPokemonName={setSelectedPokemonName}/>
         )
       }
-    </>
+    </div>
   )
 }
 

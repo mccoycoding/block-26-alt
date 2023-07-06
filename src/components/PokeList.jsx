@@ -5,8 +5,6 @@ import PokeListPrevButton from './PokeListPrevButton';
 
 export default function PokeList({ pokeOffset, setPokeOffset, setSelectedPokemonName }) {
   const [pokeList, setPokeList] = useState([]);
-  
-
 
   useEffect(() => {
     async function fetchPokemon() {
@@ -25,18 +23,18 @@ export default function PokeList({ pokeOffset, setPokeOffset, setSelectedPokemon
 
 
   return (
-    <table>
+    <table className='table table-bordered align-middle table-striped table-hover'>
       <thead>
         <tr>
-          <th colSpan="4">PokéDex</th>
+          <th colSpan="4" scope='col'>PokéDex</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Name</td>
-          <td>Sprite</td>
-          <td>PokéDex #</td>
-          <td>Type</td>
+          <td scope='col'>Name</td>
+          <td scope='col'>Sprite</td>
+          <td scope='col'>PokéDex #</td>
+          <td scope='col'>Type</td>
         </tr>
         {pokeList.map(pokemon => {
             return <PokeRow setSelectedPokemonName={setSelectedPokemonName} key={pokemon.name} pokemon={pokemon} />
