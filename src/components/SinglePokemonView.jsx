@@ -1,29 +1,34 @@
-import { useState, useEffect} from 'react';
+export default function SinglePokemonView({ pokemonObj, species, selectedPokemonName }) {
 
-export default function SinglePokemonView({ pokemonObj, selectedPokemonName, setSelectedPokemonName }) {
     if (!pokemonObj || Object.keys(pokemonObj).length === 0) {
         // Handle the case when the pokemonObj is empty or not available yet
         return <div>Loading...</div>;
       }
+    
 
     //Set short names for useful table variables
     const pokeName = selectedPokemonName.charAt(0).toUpperCase() + selectedPokemonName.slice(1)
     const type1 = pokemonObj.types[0].type.name.charAt(0).toUpperCase() + pokemonObj.types[0].type.name.slice(1);
     let type2 = null
+    const orginalFlavorText = species.flavor_text_entries[0].flavor_text;
+    const flavorText = orginalFlavorText.replace(/[\n\f]/g, " ").replace("POKéMON", "pokémon");
     //If the length of the types object is greater than 1, we define our second type
     if (pokemonObj.types.length > 1){
         type2 = pokemonObj.types[1].type.name.charAt(0).toUpperCase() + pokemonObj.types[1].type.name.slice(1);
     }
-   
-
+    
     return(
         <>
         {/*Bring us back to the Pokedex for*/}
-        <div className='off'> 
+        <div> 
             <div>
-                <h1>{pokeName}</h1>
+                <h1>{selectedPokemonName.charAt(0).toUpperCase() + selectedPokemonName.slice(1) + ` #${pokemonObj.id}`}</h1>
                 <img src={pokemonObj.sprites.front_default} />
-                <h2>Pokedex #{pokemonObj.id}</h2>
+            </div>
+            <div>
+                <article>
+                    {flavorText}
+                </article>
             </div>
             <div style={{display: 'inline-block'}}>
                 <table className='table'>
@@ -45,14 +50,11 @@ export default function SinglePokemonView({ pokemonObj, selectedPokemonName, set
                             <th>Weight</th>
                         </tr>
                         <tr>
-                            <td>{pokemonObj.height}</td>
-                            <td>{pokemonObj.weight}</td>
+                            <td>{pokemonObj.height/10 + "m"}</td>
+                            <td>{pokemonObj.weight/10 + "kg"}</td>
                         </tr>
                     </tbody>
                 </table>
-                <button className='btn btn-primary' onClick={() => {
-                    setSelectedPokemonName(null)
-                }}>Back</button>
             </div>
         </div>
         </>

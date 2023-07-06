@@ -29,7 +29,7 @@ export default function PokeRow({ pokemon, setSelectedPokemonName }) {
     }, [])
 
     return (
-        <tr onClick={() => {
+        <tr data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" onClick={() => {
             setSelectedPokemonName(pokemon.name)
         }}>
             {/*Capitalize the first letter*/}
