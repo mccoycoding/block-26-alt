@@ -1,6 +1,6 @@
 import { useState, useEffect} from 'react';
 
-export default function SinglePokemonView({ pokemonObj, selectedPokemonName, setSelectedPokemonName }) {
+export default function SinglePokemonView({ pokemonObj, selectedPokemonName }) {
     if (!pokemonObj || Object.keys(pokemonObj).length === 0) {
         // Handle the case when the pokemonObj is empty or not available yet
         return <div>Loading...</div>;
@@ -21,9 +21,8 @@ export default function SinglePokemonView({ pokemonObj, selectedPokemonName, set
         {/*Bring us back to the Pokedex for*/}
         <div className='off'> 
             <div>
-                <h1>{pokeName}</h1>
+                <h1>{selectedPokemonName.charAt(0).toUpperCase() + selectedPokemonName.slice(1) + ` #${pokemonObj.id}`}</h1>
                 <img src={pokemonObj.sprites.front_default} />
-                <h2>Pokedex #{pokemonObj.id}</h2>
             </div>
             <div style={{display: 'inline-block'}}>
                 <table className='table'>
@@ -45,14 +44,11 @@ export default function SinglePokemonView({ pokemonObj, selectedPokemonName, set
                             <th>Weight</th>
                         </tr>
                         <tr>
-                            <td>{pokemonObj.height}</td>
-                            <td>{pokemonObj.weight}</td>
+                            <td>{pokemonObj.height/10 + "m"}</td>
+                            <td>{pokemonObj.weight/10 + "kg"}</td>
                         </tr>
                     </tbody>
                 </table>
-                <button className='btn btn-primary' onClick={() => {
-                    setSelectedPokemonName(null)
-                }}>Back</button>
             </div>
         </div>
         </>

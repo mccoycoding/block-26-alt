@@ -25,14 +25,18 @@ function App() {
 
   return (
     <div className='container-fluid text-center mx-4 my-4'>
-      {/* If selectedPokemonName is true, display the singlePokemonView, else display the list. */}
-      {
-        selectedPokemonName ? (
+
+      <PokeList pokeOffset={pokeOffset} setPokeOffset={setPokeOffset} setSelectedPokemonName={setSelectedPokemonName}/>
+
+      <div className='offcanvas offcanvas-end' tabIndex='-1' id="offcanvasRight" aria-labelledby='offcanvasRightLabel'>
+        <div className="offcanvas-header">
+        <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <h1 className='offcanvas-title' id="offcanvasRightLabel"></h1>
+        </div>
+          <div className="offcanvas-body">
           <SinglePokemonView pokemonObj={pokemonObj} selectedPokemonName={selectedPokemonName} setSelectedPokemonName={setSelectedPokemonName}/>
-        ) : (
-          <PokeList pokeOffset={pokeOffset} setPokeOffset={setPokeOffset} setSelectedPokemonName={setSelectedPokemonName}/>
-        )
-      }
+        </div>
+      </div>
     </div>
   )
 }

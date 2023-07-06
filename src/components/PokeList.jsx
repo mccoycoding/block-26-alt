@@ -3,8 +3,10 @@ import PokeRow from './PokeRow';
 import PokeListNextButton from './PokeListNextButton';
 import PokeListPrevButton from './PokeListPrevButton';
 
+
 export default function PokeList({ pokeOffset, setPokeOffset, setSelectedPokemonName }) {
   const [pokeList, setPokeList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchPokemon() {
@@ -18,9 +20,17 @@ export default function PokeList({ pokeOffset, setPokeOffset, setSelectedPokemon
     }
 
     fetchPokemon();
-  }, [pokeList, pokeOffset]);
+  }, [pokeOffset]);
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000); // Wait for 10 seconds (10000 milliseconds)
 
+    return () => {
+      clearTimeout(timeout); // Clear the timeout if the component unmounts or the dependency changes
+    };
+  }, [pokeList]);
 
   return (
     <table className='table table-bordered align-middle table-striped table-hover'>
@@ -36,12 +46,21 @@ export default function PokeList({ pokeOffset, setPokeOffset, setSelectedPokemon
           <td scope='col'>PokéDex #</td>
           <td scope='col'>Type</td>
         </tr>
-        {pokeList.map(pokemon => {
-            return <PokeRow setSelectedPokemonName={setSelectedPokemonName} key={pokemon.name} pokemon={pokemon} />
-        })}
+        {isLoading ? (
+          <tr>
+            <td colSpan="4">
+              <img className='animate__animated animate__rotateIn infinite' src="https://www.freeiconspng.com/thumbs/pokeball-png/file-pokeball-png-0.png" alt="spinning pokeball" width='25%'/>
+            </td>
+          </tr>
+        ) : (
+          !isLoading &&
+          pokeList.map(pokemon => (
+            <PokeRow setSelectedPokemonName={setSelectedPokemonName} key={pokemon.name} pokemon={pokemon} />
+          ))
+        )}
         <tr>
-            <td colSpan={2}><PokeListPrevButton setPokeOffset={setPokeOffset} pokeOffset={pokeOffset} /></td>
-            <td colSpan={2}><PokeListNextButton setPokeOffset={setPokeOffset} pokeOffset={pokeOffset} /></td>
+          <td colSpan={2}><PokeListPrevButton setPokeOffset={setPokeOffset} pokeOffset={pokeOffset} setIsLoading={setIsLoading}/></td>
+          <td colSpan={2}><PokeListNextButton setPokeOffset={setPokeOffset} pokeOffset={pokeOffset} setIsLoading={setIsLoading}/></td>
         </tr>
       </tbody>
     </table>
