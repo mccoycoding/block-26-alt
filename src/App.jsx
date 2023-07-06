@@ -20,8 +20,6 @@ function App() {
         const response_pokemonSpecies = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${selectedPokemonName}`)
         const data_pokemonObj = await response_pokemonObj.json()
         const data_pokemonSpecies = await response_pokemonSpecies.json()
-        console.log(data_pokemonObj)
-        console.log(data_pokemonSpecies)
         setPokemonObj(data_pokemonObj)
         setSpecies(data_pokemonSpecies)
       } catch (error) {
@@ -38,7 +36,7 @@ function App() {
       <PokeList pokeOffset={pokeOffset} setPokeOffset={setPokeOffset} setSelectedPokemonName={setSelectedPokemonName}/>
       <div className='offcanvas offcanvas-end' tabIndex='-1' id="offcanvasRight" aria-labelledby='offcanvasRightLabel'>
         <div className="offcanvas-header">
-        <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" ></button>
         <h1 className='offcanvas-title' id="offcanvasRightLabel"></h1>
         </div>
           <div className="offcanvas-body">
