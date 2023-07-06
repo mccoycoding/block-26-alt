@@ -24,14 +24,12 @@ export default function Header() {
                                 const button = document.getElementById('toggle-theme');
                                 setButtonText("Dark")
                                 themeTarget.setAttribute('data-bs-theme', 'light')
-                                console.log("Dark" + button)
                                 button.classList.remove('btn-light')
                                 button.classList.add('btn-dark')
                             } else if (theme === "light"){
                                 const button = document.getElementById('toggle-theme');
                                 setButtonText("Light")
                                 themeTarget.setAttribute('data-bs-theme', 'dark')
-                                console.log("Light" + button)
                                 button.classList.remove('btn-dark')
                                 button.classList.add('btn-light')
                             }
