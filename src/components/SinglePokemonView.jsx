@@ -19,16 +19,14 @@ export default function SinglePokemonView({ pokemonObj, selectedPokemonName, set
     return(
         <>
         {/*Bring us back to the Pokedex for*/}
-            <button onClick={() => {
-                    setSelectedPokemonName(null)
-                }}>Back</button>
+        <div className='off'> 
             <div>
                 <h1>{pokeName}</h1>
                 <img src={pokemonObj.sprites.front_default} />
                 <h2>Pokedex #{pokemonObj.id}</h2>
             </div>
             <div style={{display: 'inline-block'}}>
-                <table>
+                <table className='table'>
                     <thead>
                         <tr>
                             <th colSpan={2}>{pokeName}'s Stats</th>
@@ -52,7 +50,11 @@ export default function SinglePokemonView({ pokemonObj, selectedPokemonName, set
                         </tr>
                     </tbody>
                 </table>
+                <button className='btn btn-primary' onClick={() => {
+                    setSelectedPokemonName(null)
+                }}>Back</button>
             </div>
+        </div>
         </>
     )
 }
