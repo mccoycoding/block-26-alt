@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PokeRow from './PokeRow';
 import PokeListNextButton from './PokeListNextButton';
 import PokeListPrevButton from './PokeListPrevButton';
+import PageJump from './PageJump';
 
 
 export default function PokeList({ pokeOffset, setPokeOffset, setSelectedPokemonName }) {
@@ -41,9 +42,9 @@ export default function PokeList({ pokeOffset, setPokeOffset, setSelectedPokemon
       </thead>
       <tbody>
         <tr>
+          <td scope='col'>Pokedex#</td>
           <td scope='col'>Name</td>
           <td scope='col'>Sprite</td>
-          <td scope='col'>PokéDex #</td>
           <td scope='col'>Type</td>
         </tr>
         {isLoading ? (
@@ -61,6 +62,12 @@ export default function PokeList({ pokeOffset, setPokeOffset, setSelectedPokemon
         <tr>
           <td colSpan={2}><PokeListPrevButton setPokeOffset={setPokeOffset} pokeOffset={pokeOffset} setIsLoading={setIsLoading}/></td>
           <td colSpan={2}><PokeListNextButton setPokeOffset={setPokeOffset} pokeOffset={pokeOffset} setIsLoading={setIsLoading}/></td>
+        </tr>
+        <tr>
+          <th colSpan={4}>Jump to Page</th>
+        </tr>
+        <tr>
+          <PageJump setPokeOffset={setPokeOffset} pokeOffset={pokeOffset} setIsLoading={setIsLoading}/>
         </tr>
       </tbody>
     </table>
