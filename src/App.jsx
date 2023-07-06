@@ -28,7 +28,7 @@ function App() {
     }
     fetchPokemonInfo()
   }, [selectedPokemonName])
-  
+
   return (
     <div>
     <Header />
