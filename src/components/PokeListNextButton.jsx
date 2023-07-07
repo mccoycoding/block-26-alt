@@ -3,9 +3,15 @@ import { useState, useEffect} from 'react';
 export default function PokeListNextButton({setPokeOffset, pokeOffset, setIsLoading}) {
     return (
         <button className='btn btn-primary' onClick={() =>{
-            const newOffset = pokeOffset + 10;
-            setPokeOffset(newOffset)
-            setIsLoading(true)
+            let newOffset;
+
+            if (pokeOffset <=1000) {
+                newOffset = 1000
+            } else {
+                newOffset = pokeOffset + 10
+                setIsLoading(true)
+            }
+            setPokeOffset(newOffset);
         }}>Next Page</button>
     )
 }
