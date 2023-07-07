@@ -5,7 +5,7 @@ export default function PokeListNextButton({setPokeOffset, pokeOffset, setIsLoad
         <button className='btn btn-primary' onClick={() =>{
             let newOffset;
 
-            if (pokeOffset <=1000) {
+            if (pokeOffset >=1010) {
                 newOffset = 1000
             } else {
                 newOffset = pokeOffset + 10

@@ -5,7 +5,7 @@ export default function PageJump({ setPokeOffset, setIsLoading, pokeOffset }) {
                 <input className="form-control" id="jump-input" type="number" placeholder="1-100" min={0} max={100} aria-label="Target page" aria-describedby="jump-submit"/>
                 <button id="jump-submit" className="btn btn-primary" onClick={()=>{
                     const target = document.getElementById("jump-input").value * 10;
-                    if (target > 1000 || target < 0 || target !== pokeOffset) return 
+                    if (target > 1000 || target < 0) return ;
                     setIsLoading(true)
                     setPokeOffset(target)
                 }}>Jump</button>
