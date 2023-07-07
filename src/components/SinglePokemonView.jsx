@@ -19,8 +19,12 @@ export default function SinglePokemonView({ pokemonObj, species, selectedPokemon
     let type2 = null
     const abilities = pokemonObj.abilities;
     const originalFlavorText = species.flavor_text_entries;
-    const englishFlavorText = originalFlavorText.find(entry => entry.language.name === 'en')
-    const flavorText = englishFlavorText.flavor_text.replace(/[\n\f]/g, " ").replace("POKéMON", "pokémon");
+    const englishFlavorText = originalFlavorText.find(entry => entry.language.name === 'en');
+    let flavorText = "???";
+    if (englishFlavorText) {
+        flavorText = englishFlavorText.flavor_text.replace(/[\n\f]/g, " ").replace("POKéMON", "pokémon");
+    };
+    
     //If the length of the types object is greater than 1, we define our second type
     if (pokemonObj.types.length > 1){
         type2 = pokemonObj.types[1].type.name.charAt(0).toUpperCase() + pokemonObj.types[1].type.name.slice(1);
@@ -35,7 +39,7 @@ export default function SinglePokemonView({ pokemonObj, species, selectedPokemon
             <div>
                 <h5>Summary</h5>
                 <article>
-                    {flavorText}
+                    {flavorText ? flavorText : "???"}
                 </article>
             </div>
             <div style={{display: 'inline-block'}}>
@@ -64,14 +68,14 @@ export default function SinglePokemonView({ pokemonObj, species, selectedPokemon
                         <tr>
                             <th colSpan={3}>Abilities</th>
                         </tr>
-                        {abilities.map(ability => (
-                            <tr key={ability.ability.name}><td colSpan={3}>{ability.ability.name.charAt(0).toUpperCase() + ability.ability.name.slice(1)}</td></tr>
+                        {abilities.map((ability, index) => (
+                            <tr key={ability.ability.name + index}><td colSpan={3}>{ability.ability.name.charAt(0).toUpperCase() + ability.ability.name.slice(1)}</td></tr>
                         ))}
                         <tr>
                             <th colSpan={3}>Habitat</th>
                         </tr>
                         <tr>
-                            <td colSpan={3}>{species.habitat.name.charAt(0).toUpperCase() + species.habitat.name.slice(1)}</td>
+                            {species.habitat === null ? (<td colSpan={3}>None</td>) : (<td colSpan={3}>{species.habitat.name.charAt(0).toUpperCase() + species.habitat.name.slice(1)}</td>)}
                         </tr>
                     </tbody>
                 </table>
