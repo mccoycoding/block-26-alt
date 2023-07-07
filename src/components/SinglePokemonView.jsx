@@ -10,11 +10,11 @@ export default function SinglePokemonView({ pokemonObj, species, selectedPokemon
 
 
     // Uncomment for to view pokemonObj and species objects
-    // console.log(pokemonObj)
-    // console.log(species)
+    console.log(pokemonObj)
+    console.log(species.name);
 
     //Set short names for useful table variables
-    const pokeName = selectedPokemonName.charAt(0).toUpperCase() + selectedPokemonName.slice(1)
+    const pokeName = species.name.charAt(0).toUpperCase() + species.name.slice(1)
     const type1 = pokemonObj.types[0].type.name.charAt(0).toUpperCase() + pokemonObj.types[0].type.name.slice(1);
     let type2 = null
     const abilities = pokemonObj.abilities;
@@ -33,7 +33,7 @@ export default function SinglePokemonView({ pokemonObj, species, selectedPokemon
         <>
         <div> 
             <div>
-                <h1>{selectedPokemonName.charAt(0).toUpperCase() + selectedPokemonName.slice(1) + ` #${pokemonObj.id}`}</h1>
+                <h1>{pokeName + ` #${pokemonObj.id}`}</h1>
                 <img width="100%" src={pokemonObj.sprites.other["official-artwork"].front_default} />
             </div>
             <div>

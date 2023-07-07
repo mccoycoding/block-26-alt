@@ -36,7 +36,9 @@ function App() {
       <PokeList pokeOffset={pokeOffset} setPokeOffset={setPokeOffset} setSelectedPokemonName={setSelectedPokemonName}/>
       <div className='offcanvas offcanvas-end' tabIndex='-1' id="offcanvasRight" aria-labelledby='offcanvasRightLabel'>
         <div className="offcanvas-header">
-        <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" ></button>
+        <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" onClick={() => {
+          setSelectedPokemonName(null)
+        }}></button>
         <h1 className='offcanvas-title' id="offcanvasRightLabel"></h1>
         </div>
           <div className="offcanvas-body">

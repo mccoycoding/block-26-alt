@@ -34,7 +34,7 @@ export default function PokeList({ pokeOffset, setPokeOffset, setSelectedPokemon
   }, [pokeList]);
 
   return (
-    <table className='table table-bordered align-middle table-striped table-hover'>
+    <table className='table table-bordered align-middle table-striped table-hover mx-3'>
       <thead>
         <tr>
           <th colSpan="4" scope='col'>PokéDex</th>
