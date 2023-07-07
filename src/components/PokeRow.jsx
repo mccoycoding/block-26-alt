@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import PokeList from "./PokeList";
 
-export default function PokeRow({ pokemon, setSelectedPokemonName }) {
+export default function PokeRow({ pokemon, setSelectedPokemonName, setIsSideLoading }) {
 
     const [spriteUrl, setSpriteUrl] = useState("")
     const [pokemonId, setpokemonId] = useState("")
@@ -28,9 +27,20 @@ export default function PokeRow({ pokemon, setSelectedPokemonName }) {
         fetchPokemonInfo(pokemon.name)
     }, [])
 
+    useEffect(() => {
+      const timeout = setTimeout(() => {
+        setIsSideLoading(false);
+      }, 1000);
+
+      return () => {
+        clearTimeout(timeout)
+      }
+    })
+
     return (
         <tr data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" onClick={() => {
             setSelectedPokemonName(pokemon.name)
+            setIsSideLoading(true)
         }}>
             <td>{pokemonId}</td>
             <td>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</td>

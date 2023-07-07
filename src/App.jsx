@@ -8,6 +8,7 @@ function App() {
   const [pokemonObj, setPokemonObj] = useState({})
   const [species, setSpecies] = useState({})
   const [pokeOffset, setPokeOffset] = useState(0)
+  const [isSideLoading, setIsSideLoading] = useState(true)
   
   
   //get useful information for SinglePokemonView
@@ -33,16 +34,17 @@ function App() {
     <div>
     <Header />
     <div id="table-div" className='container-fluid text-center'>
-      <PokeList pokeOffset={pokeOffset} setPokeOffset={setPokeOffset} setSelectedPokemonName={setSelectedPokemonName}/>
+      <PokeList pokeOffset={pokeOffset} setPokeOffset={setPokeOffset} setSelectedPokemonName={setSelectedPokemonName} setIsSideLoading={setIsSideLoading}/>
       <div className='offcanvas offcanvas-end' tabIndex='-1' id="offcanvasRight" aria-labelledby='offcanvasRightLabel'>
         <div className="offcanvas-header">
         <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" onClick={() => {
           setSelectedPokemonName(null)
+          setIsSideLoading(true);
         }}></button>
         <h1 className='offcanvas-title' id="offcanvasRightLabel"></h1>
         </div>
           <div className="offcanvas-body">
-          <SinglePokemonView pokemonObj={pokemonObj} species={species} selectedPokemonName={selectedPokemonName} setSelectedPokemonName={setSelectedPokemonName}/>
+          <SinglePokemonView pokemonObj={pokemonObj} species={species} isSideLoading={isSideLoading} setIsSideLoading={setIsSideLoading}/>
         </div>
       </div>
     </div>

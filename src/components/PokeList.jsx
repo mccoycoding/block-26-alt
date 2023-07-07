@@ -5,7 +5,7 @@ import PokeListPrevButton from './PokeListPrevButton';
 import PageJump from './PageJump';
 
 
-export default function PokeList({ pokeOffset, setPokeOffset, setSelectedPokemonName }) {
+export default function PokeList({ pokeOffset, setPokeOffset, setSelectedPokemonName, setIsSideLoading }) {
   const [pokeList, setPokeList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -50,13 +50,13 @@ export default function PokeList({ pokeOffset, setPokeOffset, setSelectedPokemon
         {isLoading ? (
           <tr>
             <td colSpan="4">
-              <img className='animate__animated animate__rotateIn infinite' src="https://www.freeiconspng.com/thumbs/pokeball-png/file-pokeball-png-0.png" alt="spinning pokeball" width='25%'/>
+              <img className='animate__animated animate__rotateIn' src="https://www.freeiconspng.com/thumbs/pokeball-png/file-pokeball-png-0.png" alt="spinning pokeball" width='25%'/>
             </td>
           </tr>
         ) : (
           !isLoading &&
           pokeList.map(pokemon => (
-            <PokeRow setSelectedPokemonName={setSelectedPokemonName} key={pokemon.name} pokemon={pokemon} />
+            <PokeRow setIsSideLoading={setIsSideLoading} setSelectedPokemonName={setSelectedPokemonName} key={pokemon.name} pokemon={pokemon} />
           ))
         )}
         <tr>

@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 
-export default function SinglePokemonView({ pokemonObj, species, selectedPokemonName }) {
+export default function SinglePokemonView({ pokemonObj, species, isSideLoading, setIsSideLoading }) {
 
 
     if (!pokemonObj || Object.keys(pokemonObj).length === 0 || !species || Object.keys(species).length === 0) {
         // Handle the case when the pokemonObj is empty or not available yet
         return <div>Loading...</div>;
       }
+      
+    
 
 
     // Uncomment for to view pokemonObj and species objects
-    console.log(pokemonObj)
-    console.log(species.name);
+    // console.log(pokemonObj)
+    // console.log(species.name);
 
     //Set short names for useful table variables
     const pokeName = species.name.charAt(0).toUpperCase() + species.name.slice(1)
@@ -31,7 +33,12 @@ export default function SinglePokemonView({ pokemonObj, species, selectedPokemon
     }
     return(
         <>
-        <div> 
+        {isSideLoading ?  (
+            <div>
+                <img className='animate__animated animate__rotateIn' src="https://www.freeiconspng.com/thumbs/pokeball-png/file-pokeball-png-0.png" alt="spinning pokeball" width='25%'/>
+            </div>
+        ) : (
+            <div> 
             <div>
                 <h1>{pokeName + ` #${pokemonObj.id}`}</h1>
                 <img width="100%" src={pokemonObj.sprites.other["official-artwork"].front_default} />
@@ -81,6 +88,8 @@ export default function SinglePokemonView({ pokemonObj, species, selectedPokemon
                 </table>
             </div>
         </div>
+        )}
+        
         </>
     )
 }
