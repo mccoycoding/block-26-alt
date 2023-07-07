@@ -5,7 +5,7 @@ import PokeListPrevButton from './PokeListPrevButton';
 import PageJump from './PageJump';
 
 
-export default function PokeList({ pokeOffset, setPokeOffset, setSelectedPokemonName, setIsSideLoading }) {
+export default function PokeList({ pokemonObj, pokeOffset, setPokeOffset, setSelectedPokemonName, setSelectedPokemonId ,setIsSideLoading }) {
   const [pokeList, setPokeList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -56,7 +56,7 @@ export default function PokeList({ pokeOffset, setPokeOffset, setSelectedPokemon
         ) : (
           !isLoading &&
           pokeList.map(pokemon => (
-            <PokeRow setIsSideLoading={setIsSideLoading} setSelectedPokemonName={setSelectedPokemonName} key={pokemon.name} pokemon={pokemon} />
+            <PokeRow  pokemonObj={pokemonObj} setIsSideLoading={setIsSideLoading} setSelectedPokemonName={setSelectedPokemonName} setSelectedPokemonId={setSelectedPokemonId} key={pokemon.name} pokemon={pokemon} />
           ))
         )}
         <tr>

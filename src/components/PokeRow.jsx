@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function PokeRow({ pokemon, setSelectedPokemonName, setIsSideLoading }) {
+export default function PokeRow({ pokemonObj ,pokemon, setSelectedPokemonName, setSelectedPokemonId ,setIsSideLoading }) {
 
     const [spriteUrl, setSpriteUrl] = useState("")
     const [pokemonId, setpokemonId] = useState("")
@@ -40,6 +40,7 @@ export default function PokeRow({ pokemon, setSelectedPokemonName, setIsSideLoad
     return (
         <tr className="poke-row" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" onClick={() => {
             setSelectedPokemonName(pokemon.name)
+            setSelectedPokemonId(pokemonId)
             setIsSideLoading(true)
         }}>
             <td>{pokemonId}</td>

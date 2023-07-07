@@ -12,11 +12,11 @@ export default function SinglePokemonView({ pokemonObj, species, isSideLoading, 
 
 
     // Uncomment for to view pokemonObj and species objects
-    // console.log(pokemonObj)
-    // console.log(species.name);
+    //  console.log(pokemonObj.id)
+    //  console.log(species);
 
     //Set short names for useful table variables
-    const pokeName = species.name.charAt(0).toUpperCase() + species.name.slice(1)
+    const pokeName = pokemonObj.name.charAt(0).toUpperCase() + pokemonObj.name.slice(1)
     const type1 = pokemonObj.types[0].type.name.charAt(0).toUpperCase() + pokemonObj.types[0].type.name.slice(1);
     let type2 = null
     const abilities = pokemonObj.abilities;
@@ -31,6 +31,7 @@ export default function SinglePokemonView({ pokemonObj, species, isSideLoading, 
     if (pokemonObj.types.length > 1){
         type2 = pokemonObj.types[1].type.name.charAt(0).toUpperCase() + pokemonObj.types[1].type.name.slice(1);
     }
+
     return(
         <>
         {isSideLoading ?  (
@@ -45,12 +46,12 @@ export default function SinglePokemonView({ pokemonObj, species, isSideLoading, 
             </div>
             <div>
                 <h5>Summary</h5>
-                <article>
+                <article className="border rounded p-1">
                     {flavorText ? flavorText : "???"}
                 </article>
             </div>
             <div style={{display: 'inline-block'}}>
-                <table className='table'>
+                <table className='table border'>
                     <thead>
                         <tr>
                             <th colSpan={3}>{pokeName}'s Stats</th>
@@ -78,12 +79,8 @@ export default function SinglePokemonView({ pokemonObj, species, isSideLoading, 
                         {abilities.map((ability, index) => (
                             <tr key={ability.ability.name + index}><td colSpan={3}>{ability.ability.name.charAt(0).toUpperCase() + ability.ability.name.slice(1)}</td></tr>
                         ))}
-                        <tr>
-                            <th colSpan={3}>Habitat</th>
-                        </tr>
-                        <tr>
-                            {species.habitat === null ? (<td colSpan={3}>None</td>) : (<td colSpan={3}>{species.habitat.name.charAt(0).toUpperCase() + species.habitat.name.slice(1)}</td>)}
-                        </tr>
+                        {species.habitat && (<tr><th colSpan={3}>Habitat</th></tr>)}
+                        {species.habitat && (<tr><td colSpan={3}>{species.habitat.name.charAt(0).toUpperCase() + species.habitat.name.slice(1)}</td></tr>)}
                     </tbody>
                 </table>
             </div>
