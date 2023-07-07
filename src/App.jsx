@@ -39,7 +39,6 @@ function App() {
         <div className="offcanvas-header">
         <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" onClick={() => {
           setSelectedPokemonName(null)
-          setIsSideLoading(true);
         }}></button>
         <h1 className='offcanvas-title' id="offcanvasRightLabel"></h1>
         </div>
