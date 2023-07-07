@@ -38,7 +38,7 @@ export default function PokeRow({ pokemon, setSelectedPokemonName, setIsSideLoad
     })
 
     return (
-        <tr data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" onClick={() => {
+        <tr className="poke-row" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" onClick={() => {
             setSelectedPokemonName(pokemon.name)
             setIsSideLoading(true)
         }}>
